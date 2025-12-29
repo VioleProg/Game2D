@@ -23,6 +23,9 @@
     <ClInclude Include="Field\MapManager.h">
       <Filter>Field</Filter>
     </ClInclude>
+    <ClInclude Include="Settings\Resolution.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -33,6 +36,9 @@
     </Filter>
     <Filter Include="Field">
       <UniqueIdentifier>{3efcbac7-2b85-427f-9010-e5e8fe0ad7e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Settings">
+      <UniqueIdentifier>{00c34d72-7267-447f-8863-8eb458e10082}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -166,6 +166,7 @@
     <ClInclude Include="Field\MapDefinitions.h" />
     <ClInclude Include="Field\MapManager.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="Settings\Resolution.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

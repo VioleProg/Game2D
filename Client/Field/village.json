@@ -1,10 +1,8 @@
 {
-  "texturas": {
-    "chao":   "assets/grama.png"
-  },
+  "texturas": { "chao": "assets/grama.png" },
   "layout": [
-
-     { "id": "chao", "x": 64, "y": 0, "z": 0, "w": 50, "h": 100 }
-
+     { "id": "chao", "x": 0, "y": 0, "z": 0, "w": 64, "h": 64 },
+     { "id": "chao", "x": 64, "y": 0, "z": 0, "w": 64, "h": 64 },
+     { "id": "chao", "x": 128, "y": 50, "z": 0, "w": 64, "h": 64 }
   ]
 }
