@@ -5,5 +5,7 @@
   </Configurations>
   <Project Path="Game/Game2D.vcxproj" />
   <Project Path="Server/Server.vcxproj" />
-  <Project Path="Shared/Shared.vcxproj" />
+  <Project Path="Shared/Shared.vcxproj">
+    <BuildType Solution="Debug|x64" Project="Release" />
+  </Project>
 </Solution>
