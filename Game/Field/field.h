@@ -12,6 +12,7 @@
 struct MapItem {
     std::string id;
     DirectX::SimpleMath::Vector3 pos; // X, Y e Z (profundidade)
+    float width, height;
 };
 
 class Field {

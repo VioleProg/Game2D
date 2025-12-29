@@ -16,7 +16,14 @@ bool Field::Initialize(ID3D11Device* device, std::string jsonPath) {
     }
 
     for (auto& item : data["layout"]) {
-        m_layout.push_back({ item["id"], { (float)item["x"], (float)item["y"], (float)item["z"] } });
+        MapItem el;
+        el.id = item["id"];
+        el.pos = { (float)item["x"], (float)item["y"], (float)item["z"] };
+
+        el.width = (float)item["w"];
+        el.height = (float)item["h"];
+
+        m_layout.push_back(el);
     }
 
     std::sort(m_layout.begin(), m_layout.end(), [](const MapItem& a, const MapItem& b) {
@@ -30,7 +37,14 @@ void Field::Render(DirectX::SpriteBatch* batch) {
     for (auto& item : m_layout) {
         auto texture = m_textures[item.id].Get();
         if (texture) {
-            batch->Draw(texture, DirectX::SimpleMath::Vector2(item.pos.x, item.pos.y), DirectX::Colors::White);
+            RECT destRect = {
+                (long)item.pos.x,
+                (long)item.pos.y,
+                (long)(item.pos.x + item.width),
+                (long)(item.pos.y + item.height)
+            };
+
+            batch->Draw(texture, destRect, DirectX::Colors::White);
         }
     }
 }

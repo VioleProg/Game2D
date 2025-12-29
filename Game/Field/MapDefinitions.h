@@ -4,7 +4,7 @@
 namespace Maps {
     static const std::string Village = "Field/village.json";
     static const std::string Dungeon = "Field/dungeon.json";
-    static const std::string Forest = "Field/forest.json";
+    static const std::string Forest  = "Field/forest.json";
 
     inline std::string GetPathById(int id) {
         switch (id) {
