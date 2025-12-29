@@ -14,9 +14,15 @@
     <ClCompile Include="include\smPacket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="include\TCore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\smPacket.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TCore.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

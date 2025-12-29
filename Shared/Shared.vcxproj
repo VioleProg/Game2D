@@ -148,9 +148,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="include\smPacket.cpp" />
+    <ClCompile Include="include\TCore.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\smPacket.h" />
+    <ClInclude Include="include\TCore.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

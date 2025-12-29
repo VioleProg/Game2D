@@ -2,8 +2,37 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Char\Entity.cpp">
+      <Filter>Char</Filter>
+    </ClCompile>
+    <ClCompile Include="Field\field.cpp">
+      <Filter>Field</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />
+    <ClInclude Include="Char\Entity.h">
+      <Filter>Char</Filter>
+    </ClInclude>
+    <ClInclude Include="Field\field.h">
+      <Filter>Field</Filter>
+    </ClInclude>
+    <ClInclude Include="Field\MapDefinitions.h">
+      <Filter>Field</Filter>
+    </ClInclude>
+    <ClInclude Include="Field\MapManager.h">
+      <Filter>Field</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Char">
+      <UniqueIdentifier>{27a3c5bd-4355-48ac-9744-77cda4148b3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field">
+      <UniqueIdentifier>{3efcbac7-2b85-427f-9010-e5e8fe0ad7e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

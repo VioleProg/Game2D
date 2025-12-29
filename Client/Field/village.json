@@ -1,0 +1,13 @@
+{
+  "texturas": {
+    "chao":   "assets/grama.png",
+    "parede": "assets/parede_pedra.png",
+    "arvore": "assets/arvore.png"
+  },
+  "layout": [
+    { "id": "chao", "x": 0, "y": 0, "z": 0 },
+    { "id": "chao", "x": 64, "y": 0, "z": 0 },
+    { "id": "parede", "x": 128, "y": 0, "z": 1 },
+    { "id": "arvore", "x": 200, "y": 50, "z": 2 }
+  ]
+}

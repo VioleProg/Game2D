@@ -1,19 +1,27 @@
 #include "main.h"
+#include "Field/field.h" 
+#include "Field/MapDefinitions.h"
 #include <iostream>
 #include <string>
 #include <Windows.h>
 #include <d3d11.h>
 #include <wrl.h>
+#include <SpriteBatch.h> 
+#include <memory>
 
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "dxgi.lib")
 
 using Microsoft::WRL::ComPtr;
+using namespace DirectX;
 
 ComPtr<ID3D11Device>           g_device;
 ComPtr<ID3D11DeviceContext>    g_context;
 ComPtr<IDXGISwapChain>         g_swapChain;
 ComPtr<ID3D11RenderTargetView> g_renderTarget;
+
+std::unique_ptr<SpriteBatch>    g_spriteBatch;
+std::unique_ptr<Field>          g_field;
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
     if (message == WM_DESTROY) { PostQuitMessage(0); return 0; }
@@ -23,10 +31,10 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 void InitD3D(HWND hWnd) {
     DXGI_SWAP_CHAIN_DESC scd = {};
     scd.BufferCount = 1;
-    scd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM; 
+    scd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
     scd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
     scd.OutputWindow = hWnd;
-    scd.SampleDesc.Count = 1; 
+    scd.SampleDesc.Count = 1;
     scd.Windowed = TRUE;
 
     D3D11CreateDeviceAndSwapChain(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, 0,
@@ -36,6 +44,15 @@ void InitD3D(HWND hWnd) {
     g_swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pBackBuffer);
     g_device->CreateRenderTargetView(pBackBuffer.Get(), nullptr, &g_renderTarget);
     g_context->OMSetRenderTargets(1, g_renderTarget.GetAddressOf(), nullptr);
+
+    g_spriteBatch = std::make_unique<SpriteBatch>(g_context.Get());
+    g_field = std::make_unique<Field>();
+
+    if (!g_field->Initialize(g_device.Get(), Maps::Village)) {
+        MessageBox(hWnd, L"Erro ao carregar os Mapas", L"Erro", MB_ICONERROR);
+    }
+
+    g_field->SetupViewport(g_context.Get());
 }
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrev, LPSTR lpCmd, int nShow) {
@@ -58,6 +75,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrev, LPSTR lpCmd, int nShow)
         else {
             float color[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
             g_context->ClearRenderTargetView(g_renderTarget.Get(), color);
+
+            g_spriteBatch->Begin();
+            if (g_field) g_field->Render(g_spriteBatch.get());
+            g_spriteBatch->End();
 
             g_swapChain->Present(1, 0);
         }

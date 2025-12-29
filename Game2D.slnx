@@ -4,8 +4,11 @@
     <Platform Name="x86" />
   </Configurations>
   <Project Path="Game/Game2D.vcxproj" />
-  <Project Path="Server/Server.vcxproj" />
+  <Project Path="Server/Server.vcxproj">
+    <Build Solution="Debug|x64" Project="false" />
+  </Project>
   <Project Path="Shared/Shared.vcxproj">
     <BuildType Solution="Debug|x64" Project="Release" />
+    <Build Solution="Debug|x64" Project="false" />
   </Project>
 </Solution>
